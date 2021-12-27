@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: klakegg/hugo:ext-ubuntu-onbuild
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
         with:
@@ -22,7 +22,7 @@ jobs:
           # extended: true
 
       - name: Build
-        run: hugo --minify
+        run: sudo apt-get install hugo && hugo --minify
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
