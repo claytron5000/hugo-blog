@@ -1,0 +1,163 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Finding the best job | My New Hugo Site</title>
+<meta name=viewport content="width=device-width,minimum-scale=1">
+<meta name=description content="I like my job, but it&rsquo;s not the best job. And since I deserver the best job it&rsquo;s time I found it, lucky for me Outside Magazine already did the work and found the best 100 places to work!
+But Clayton, you say, that&rsquo;s a two year old post, and how come you trust some magazine to decide what is best for you? Well, I don&rsquo;t, and it is, but I&rsquo;m taking the day off and web scrapping relaxes me.">
+<meta name=generator content="Hugo 0.91.2">
+<meta name=ROBOTS content="NOINDEX, NOFOLLOW">
+<link rel=stylesheet href=/ananke/css/main.min.css>
+<meta property="og:title" content="Finding the best job">
+<meta property="og:description" content="I like my job, but it&rsquo;s not the best job. And since I deserver the best job it&rsquo;s time I found it, lucky for me Outside Magazine already did the work and found the best 100 places to work!
+But Clayton, you say, that&rsquo;s a two year old post, and how come you trust some magazine to decide what is best for you? Well, I don&rsquo;t, and it is, but I&rsquo;m taking the day off and web scrapping relaxes me.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://claytron5000.github.io/best-job-ever/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2019-03-22T20:34:07+00:00">
+<meta property="article:modified_time" content="2019-03-22T20:34:07+00:00">
+<meta itemprop=name content="Finding the best job">
+<meta itemprop=description content="I like my job, but it&rsquo;s not the best job. And since I deserver the best job it&rsquo;s time I found it, lucky for me Outside Magazine already did the work and found the best 100 places to work!
+But Clayton, you say, that&rsquo;s a two year old post, and how come you trust some magazine to decide what is best for you? Well, I don&rsquo;t, and it is, but I&rsquo;m taking the day off and web scrapping relaxes me."><meta itemprop=datePublished content="2019-03-22T20:34:07+00:00">
+<meta itemprop=dateModified content="2019-03-22T20:34:07+00:00">
+<meta itemprop=wordCount content="1359">
+<meta itemprop=keywords content><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Finding the best job">
+<meta name=twitter:description content="I like my job, but it&rsquo;s not the best job. And since I deserver the best job it&rsquo;s time I found it, lucky for me Outside Magazine already did the work and found the best 100 places to work!
+But Clayton, you say, that&rsquo;s a two year old post, and how come you trust some magazine to decide what is best for you? Well, I don&rsquo;t, and it is, but I&rsquo;m taking the day off and web scrapping relaxes me.">
+</head>
+<body class="ma0 avenir bg-near-white">
+<header>
+<div class=bg-black>
+<nav class="pv3 ph3 ph4-ns" role=navigation>
+<div class="flex-l justify-between items-center center">
+<a href=/ class="f3 fw2 hover-white no-underline white-90 dib">
+My New Hugo Site
+</a>
+<div class="flex-l items-center">
+<div class=ananke-socials>
+</div>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<main class=pb7 role=main>
+<article class="flex-l flex-wrap justify-between mw8 center ph3">
+<header class="mt4 w-100">
+<aside class="instapaper_ignoref b helvetica tracked">
+POSTS
+</aside>
+<div id=sharing class="mt3 ananke-socials">
+</div>
+<h1 class="f1 athelas mt3 mb1">Finding the best job</h1>
+<p class=tracked>
+By <strong>
+Clayton Salem
+</strong>
+</p>
+<time class="f6 mv4 dib tracked" datetime=2019-03-22T20:34:07Z>March 22, 2019</time>
+</header>
+<div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>I like my job, but it&rsquo;s not the <em>best</em> job. And since I deserver the <em>best</em> job it&rsquo;s time I found it, lucky for me <a href=https://www.outsideonline.com/2257551/100-best-places-work-2017>Outside Magazine</a> already did the work and found the best 100 places to work!</p>
+<p>But Clayton, you say, that&rsquo;s a two year old post, and how come you trust some magazine to decide what is best for you? Well, I don&rsquo;t, and it is, but I&rsquo;m taking the day off and web scrapping relaxes me.</p>
+<h3 id=-is-still-a-lot>💯 is still a lot</h3>
+<p>They&rsquo;ve narrowed it down to 100 best places to work, but that&rsquo;s still a lot to look at and read. Plus, they&rsquo;ve sorted it from best to 100th best, but their criteria is opaque, and probably doesn&rsquo;t align with mine. However, they have lightly structured the page content, so maybe I can pull out relavent information with a little javascript DOM scraping, yay!</p>
+<p>The first step is to look at the mark-up and determine the rhyme and reason here. Open the Inspector!</p>
+<p>Like any generated site there&rsquo;s a lot of markup and <code>div</code>ities, but it&rsquo;s pretty clear the relevant parts are structured as follows:</p>
+<pre tabindex=0><code>    &lt;div class=&quot;article__body article__body--linear post-entry spacing &quot;&gt;
+        &lt;!-- some more divs...--&gt;
+        &lt;h2&gt;1. Forum Phi Architecture&lt;/h2&gt;
+        &lt;p&gt;&lt;/p&gt;
+        &lt;figure class=&quot;rel has-blur has-fade-in post-block ratio-horizontal post-block--inline post-block--medium post-block--with-caption fade-in-fast&quot;&gt;
+        &lt;!-- and a whole bunch of stuff I dont want... --&gt;
+        &lt;/figure&gt;
+        &lt;p&gt;&lt;/p&gt;
+        &lt;p&gt;
+            &lt;strong&gt;Location:&lt;/strong&gt; Aspen, Colorado
+            &lt;br&gt;
+            &lt;strong&gt;What they do:&lt;/strong&gt; &lt;a href=&quot;https://forumphi.com/&quot; target=&quot;_blank&quot;&gt;Architecture, interior design, and land planning services&lt;/a&gt;
+            &lt;br&gt;
+            &lt;strong&gt;Number of employees:&lt;/strong&gt; 21
+            &lt;br&gt;
+            &lt;strong&gt;Average salary*:&lt;/strong&gt; $65,819
+            &lt;br&gt;
+            &lt;strong&gt;Vacation time:&lt;/strong&gt; Unlimited vacation days after one year.
+            &lt;br&gt;
+            &lt;strong&gt;Perks:&lt;/strong&gt; Forum Phridays team-building events: Take a Friday off to hit the slopes, go biking, or do a hut-to-hut trip. Also: Employees who recommend someone for recruitment get a $500 bonus after that new hire’s 90-day review.
+            &lt;br&gt;
+            &lt;strong&gt;What they say:&lt;/strong&gt; “We have a Forum Phitness Club where staff get together and workout during lunch. It can take many forms—hiking, biking, climbing, gym, skiing. Our facilities are all around us in Aspen.”
+        &lt;/p&gt;
+        &lt;!-- and it continues in a similar pattern --&gt;
+    &lt;/div&gt;
+</code></pre><p>This is pretty typical structure down the page. Once I ignore the <code>figure</code>s, empty and extraneous <code>p</code> elements I have an <code>h2</code> followed by a <code>p</code> that contains the data I want to get at. The data within that <code>p</code> isn&rsquo;t structured, but it fortunately follow a pretty clear pattern of <code>strong</code> tag, followed by a text node, then separated by <code>br</code> tags.</p>
+<p>The data I&rsquo;m interested in is: Name, Location, link to the company&rsquo;s website, number of employees, average salary. Perks, vacation time, other text is mostly fluff, or it&rsquo;s things that I can get a better sense of from the company&rsquo;s own website.</p>
+<p>Now that I can see the content in a mock-structured manner, what do I actually want to extract/sort on? And maybe larger, do i want to actually do something transient like sort by salary in the console, or actually save/store the data somewhere. Let&rsquo;s start with the goal that I&rsquo;ll get an object with the company title as key, and the four pertinent data points as attributes.</p>
+<h4 id=step-1-gather-the-title-and-paragraph>Step 1: gather the title and paragraph</h4>
+<pre tabindex=0><code>document.querySelectorAll('.article__body h2')
+</code></pre><p>This results in <code>NodeList(105)</code>, crap. The nice thing here is I <em>know</em> the total, and it&rsquo;s a nice round <code>100</code>, which means there are 5 sneaky <code>h2</code> in my list, and no classes to sort them out on.</p>
+<pre tabindex=0><code>Array.from(document.querySelectorAll('.article__body h2')).map(h2 =&gt; h2.innerText)
+</code></pre><p>Great, now I can see there are a bunch of &ldquo;How I work&rdquo; blocks on the page. These are <code>h2</code> elements followed by <code>h3</code>s. However, the titles I do want have something in common, numbers start each title &ldquo;79. Taptica!&rdquo;</p>
+<pre tabindex=0><code>Array.from(document.querySelectorAll('.article__body h2')).map(h2 =&gt; h2.innerText).filter(h2Text =&gt; parseInt(h2Text.substring(0,1)))
+</code></pre><p><code>100</code>, Boom! Good thing <code>parseInt</code> returns a <code>null</code> which resolves to false in the filter.</p>
+<p>Of course now we need to go back up to the <code>NodeList</code> so we can grab the sibling <code>p</code> tags. We could use the text strings to re-search the DOM, but I think a little re-arranging will get us what we need.</p>
+<pre tabindex=0><code>Array.from(document.querySelectorAll('.article__body h2')).filter(h2 =&gt; parseInt(h2.innerText.substring(0,1)))
+</code></pre><p>Some of you might&rsquo;ve gotten there first, but I&rsquo;m a procedural kinda guy&mldr;</p>
+<pre tabindex=0><code>Array.from(document.querySelectorAll('.article__body h2')).filter(h2 =&gt; parseInt(h2.innerText.substring(0,1))).map(h2 =&gt; { return {name: h2.innerText, dataParagraph: h2.nextSibling}})
+</code></pre><p>This is a little leap ahead, but I&rsquo;m learning here. We now have something that looks like it&rsquo;s taking shape, an object with a company name, and a paragraph that contains my data. However, I know there are a bunch of empty paragraphs and figures following some titles. Basically, we want to do a <code>nextSibling</code> on each subsequent element until we get a paragraph with content. Do you think we should start making functions? [very gravelly voice] Where we&rsquo;re going, we don&rsquo;t <strong>need</strong> functions.</p>
+<pre tabindex=0><code>Array.from(document.querySelectorAll('.article__body h2')).filter(h2 =&gt; parseInt(h2.innerText.substring(0,1))).map(h2 =&gt; { return {name: h2.innerText, dataParagraph: h2.nextSibling.innerText ? h2.nextSibling : h2.nextSibling.nextSibling.nextSibling.nextSibling}})
+</code></pre><p>Okay, I was a little cocky with this one. Without a function to handle some recursive logic, I&rsquo;ve had to cheat this one in. The page structure is pretty consistent, so doing the quadruple <code>nextSibling</code> seems to work. Otherwise I&rsquo;d have to a sort of maxed-out ternary <code>h2.nextSibling.innerText ? h2.nextSibling : h2.nextSibling.nextSibling.innerText ? h2.nextSibling.nextSibling.innerText : h2.nextSibling.nextSibling.nextSibling.innerText ? etc</code>. And without a recursion I basically do the same thing I&rsquo;m doing above (namely, counting the elements until an paragraph with text), just in a harder to read way. If it turns out I&rsquo;m wrong about the page structure I might have to come back to this.</p>
+<p>Next I need to parse the paragraph into structured content. I know I bragged about doing it without functions, and I regret that already, I&rsquo;m sorry, I take it back. Especially since I need to apply the structuring in two places, it really should be a function.</p>
+<pre tabindex=0><code>const paraParse = (paragraph) =&gt; {
+    return {
+        salaryInt: parseInt(Array.from(paragraph.querySelectorAll('strong')).filter(strong =&gt; strong.innerText.includes('salary'))[0].nextSibling.wholeText.replace(/,|\$/g, ''))
+    }
+}
+
+</code></pre><p>Okay, did I say something about learning? I got to the point where I had the text from the <code>nextSibling</code> containing the salary, but string methods weren&rsquo;t working on it. When I did a <code>typeof</code>, it told me I was dealing with an object&mldr; huh? Like how String is an object in python?</p>
+<p>After a few minutes I realized I had a <code>textNode</code> from the <code>nextSibling</code> attribute. I didn&rsquo;t find much documentation on <code>textNode</code>, but a quick stackoverflow lead me to the wholeText attribute.</p>
+<p>Let&rsquo;s continue, we&rsquo;re getting close:</p>
+<pre tabindex=0><code>const paraParse = (paragraph) =&gt; {
+    return {
+        salaryInt: parseInt(Array.from(paragraph.querySelectorAll('strong')).filter(strong =&gt; strong.innerText.includes('salary'))[0].nextSibling.wholeText.replace(/,|\$/g, '')),
+        location: Array.from(paragraph.querySelectorAll('strong')).filter(strong =&gt; strong.innerText.includes('Location'))[0].nextSibling.wholeText,
+        numEmployees: Array.from(paragraph.querySelectorAll('strong')).filter(strong =&gt; strong.innerText.includes('employees'))[0].nextSibling.wholeText,
+        link: Array.from(paragraph.querySelectorAll('strong')).filter(strong =&gt; strong.innerText.includes('What they'))[0].nextSibling.href
+    }
+}
+</code></pre><p>Dang, that might work. To test this function I used the element inspector&rsquo;s &ldquo;Copy JS Path&rdquo; method. This allows me to assign any element on the page to a variable, then run that variable through my function. Now I apply it to my selector thing.</p>
+<pre tabindex=0><code>Array.from(document.querySelectorAll('.article__body h2')).filter(h2 =&gt; parseInt(h2.innerText.substring(0,1))).map(h2 =&gt; { return {name: h2.innerText, dataParagraph: h2.nextSibling.innerText ? paraParse(h2.nextSibling) : paraParse(h2.nextSibling.nextSibling.nextSibling.nextSibling)}})
+</code></pre><p>Oh dangity dang. <code>Uncaught TypeError: Cannot read property 'nextSibling' of undefined</code>. And since it&rsquo;s all part of the same command and I&rsquo;m using <code>nextSibling</code> everywhere it&rsquo;s hard to debug. I&rsquo;m guessing it&rsquo;s in the attribute assignments.</p>
+<pre tabindex=0><code>const paraParse3 = (paragraph) =&gt; {
+    return {
+        salaryInt: parseInt(Array.from(paragraph.querySelectorAll('strong')).filter(strong =&gt; strong.innerText.includes('salary'))[0] ? strong.innerText.includes('salary')[0].nextSibling.wholeText.replace(/,|\$/g, ''): ''),
+        location: Array.from(paragraph.querySelectorAll('strong')).filter(strong =&gt; strong.innerText.includes('Location'))[0].nextSibling ? strong.innerText.includes('Location')[0].nextSibling.wholeText : '',
+        numEmployees: Array.from(paragraph.querySelectorAll('strong')).filter(strong =&gt; strong.innerText.includes('employees'))[0].nextSibling ? strong.innerText.includes('employees')[0].nextSibling.wholeText : '',
+        link: Array.from(paragraph.querySelectorAll('strong')).filter(strong =&gt; strong.innerText.includes('What they'))[0].nextSibling ? strong.innerText.includes('What they')[0].nextSibling.href : ''
+    }
+}
+</code></pre><p>Egads!</p>
+<pre tabindex=0><code>Array.from(document.querySelectorAll('.article__body h2')).filter(h2 =&gt; parseInt(h2.innerText.substring(0,1))).map(h2 =&gt; { return {name: h2.innerText, dataParagraph: h2.nextSibling.innerText ? paraParse3(h2.nextSibling) : paraParse3(h2.nextSibling.nextSibling.nextSibling.nextSibling)}})
+</code></pre><p><code>Uncaught ReferenceError: strong is not defined</code> Do it all in the console, he said, it&rsquo;ll be fun, he said, one simple function definition, he said. Damn you past self!</p>
+<p>Unfortunately, my meter is running out, and so is my patience. I&rsquo;ve successfully avoided doing things I <em>should</em> be doing for a couple hours, and I&rsquo;ve learned a few things. The main thing, is maybe of course, I need to do the scraping in a way that I can actually debug the issues that appear. I can wing it up to a point, but after a certain amount of complexity it gets very hard to move forward.</p>
+<p>If I come back to this on another rainy day I&rsquo;ll update this post.</p>
+<ul class=pa0>
+</ul>
+<div class="mt6 instapaper_ignoref">
+</div>
+</div>
+<aside class="w-30-l mt6-l">
+</aside>
+</article>
+</main>
+<footer class="bg-black bottom-0 w-100 pa3" role=contentinfo>
+<div class="flex justify-between">
+<a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href=https://claytron5000.github.io>
+&copy; My New Hugo Site 2021
+</a>
+<div>
+<div class=ananke-socials>
+</div></div>
+</div>
+</footer>
+</body>
+</html>
