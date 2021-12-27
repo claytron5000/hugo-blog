@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: klakegg/hugo
+    runs-on: klakegg/hugo:ext-ubuntu-onbuild
     steps:
       - uses: actions/checkout@v2
         with:
