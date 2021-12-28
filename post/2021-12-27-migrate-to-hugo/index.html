@@ -37,7 +37,39 @@
 <h2 class="subtitle is-6">December 27, 2021</h2>
 <h1 class=title>Migrate to Hugo</h1>
 <div class=content>
-<p>This is a series of posts inspired by my own <a href="https://twitter.com/ClaytonSalem/status/1475432712928477191?s=20">reaction</a> to a tweet about not blogging.</p>
+<p>This is a series of posts inspired by my own <a href="https://twitter.com/ClaytonSalem/status/1475432712928477191?s=20">reaction</a> to a tweet about not blogging. In this post I&rsquo;ll migrate my blog to Hugo, which is something I&rsquo;ve been wanting to try for a while.</p>
+<h1 id=step-one-install-hugo>Step One; Install Hugo</h1>
+<pre tabindex=0><code>brew install hugo
+hugo version
+</code></pre><p>Okay, easy peasey.</p>
+<h1 id=step-two-migrate>Step Two; Migrate!</h1>
+<p>There are a few tools to migrate, but there&rsquo;s a built-in CLI that looks super easy:</p>
+<blockquote>
+<p>Import your site from other web site generators like Jekyll.</p>
+</blockquote>
+<blockquote>
+<p>Import requires a subcommand, e.g. <code>hugo import jekyll jekyll_root_path target_path</code></p>
+</blockquote>
+<p>Looks easy, but when I run the command nothing appears to happen. I run in a bunch of times, adding the <code>--debug</code> flag, which appears to do nothgin also. Then I notice there&rsquo;s a <code>public</code> directory, but it&rsquo;s empty. I try a few other flags but nothing seems to do anything else. Maybe I&rsquo;m doing it on the wrong directory.</p>
+<p>I install the site, <code>hugo new site</code>. Then I run the <code>import</code> command with the <code>--force</code> flag. This works! Note to self: PR to the Hugo repo to update their documentation: &ldquo;import from another site <strong>to an installed site</strong>.</p>
+<h1 id=check-out-the-site-locally>Check out the site locally</h1>
+<p>I start with the <code>hugo server</code> command. The site is served, but it&rsquo;s just a blank page. I install a theme used in the example, but the instructions tell me I need to install it as a git-submodule, this is getting, uh, interesting.</p>
+<p>I install the theme as a sub-module and run the <code>hugo server</code> command. Again, white screen. So far I&rsquo;ve been trying to run this blog &ldquo;blind.&rdquo; I.e. I haven&rsquo;t opened it in a text editor. It might be time.</p>
+<p>I add the <code>theme = "annake"</code> line to the config.toml file, but this throws an error. (Computers are cursed, run to the woods where you belong.)</p>
+<p>I mess around with the toml file, which results in an error I can&rsquo;t seem to get out of.</p>
+<pre tabindex=0><code> error calling markdownify: unable to cast maps.Params{&quot;email&quot;:&quot;ben@example.com&quot;, &quot;name&quot;:&quot;Ben&quot;, &quot;uri&quot;:&quot;http://ben.balter.com&quot;} of type maps.Params to string
+</code></pre><p>When I remove the theme line, the error goes away, when I add it, the <code>server</code> command fails. Googling errors while installing a theme is not where I wanted this blog to go, but maybe it&rsquo;s exactly what I should have expected.</p>
+<p>I took a longer look at the migrated site, and that seems to be the problem. The import imported what looks like a bunch of examples posts from <code>content/post/vendor/bundle/ruby/2.6.0/gems/jekyll-feed-0.10.0/spec/fixtures</code>. It put these in with my real posts. I guess by enabling the theme, the server went in and tried to actually build the posts.</p>
+<p>Removing that directory of posts, adding the theme back to the config file, the server starts, runs, and serves. Phew.</p>
+<h1 id=theming>Theming</h1>
+<p>I don&rsquo;t want a redesign, but I also don&rsquo;t want to spend too much time on these. I&rsquo;ll probably keep the current site. Re-thememing, or migrating my current theme to a new platform is certainly within the scope of this blog, but I also know I have limited patience and time, so for the moment, I&rsquo;ll skip that and instead work on the next step.</p>
+<h1 id=building-and-serving-the-site>Building and serving the site</h1>
+<p>First step is to create a new repository. I&rsquo;m sticking with github because it&rsquo;s what I know. In the process I remember all the images are statically stored in git&mldr; not great. That&rsquo;ll have to be something I fix before doing this again. However, onward!</p>
+<p>I haven&rsquo;t tried github actions yet, and the Hugo site offers a simple looking set up, so copy-paste away.</p>
+<p>My end goal was to host this as a subdomain to my current site, and add a robots.txt to hide the redundant site. But I&rsquo;m not sure it&rsquo;s worth the effort, so, github pages here we go.</p>
+<p>It dies on the Build step : <code>Error building site: TOCSS: failed to transform "ananke/css/main.css" something, something, SCSS</code>. Ugh, I hate Sass. This looks like a problem with the version of go included in the build container. So, do I figure out how to write a minimal theme, or fix the build container.</p>
+<p>Using a new container seems like the easier, but now I&rsquo;m running into the limits of github pages. After trying to tag the build with a hugo-specific container I get a <code>Waiting for a self-hosted runner to pickup this job...</code> error. I guess what this means is I can&rsquo;t run any container on github actions, but only the ubuntu image.</p>
+<p>So without getting deep into github, I&rsquo;m trying this shortcut. On the line where the build happens, I&rsquo;m installing the hugo dependency. <code>sudo apt-get install hugo && hugo --minify</code></p>
 </div>
 </div>
 </section>
