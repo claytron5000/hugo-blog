@@ -69,7 +69,15 @@ hugo version
 <p>My end goal was to host this as a subdomain to my current site, and add a robots.txt to hide the redundant site. But I&rsquo;m not sure it&rsquo;s worth the effort, so, github pages here we go.</p>
 <p>It dies on the Build step : <code>Error building site: TOCSS: failed to transform "ananke/css/main.css" something, something, SCSS</code>. Ugh, I hate Sass. This looks like a problem with the version of go included in the build container. So, do I figure out how to write a minimal theme, or fix the build container.</p>
 <p>Using a new container seems like the easier, but now I&rsquo;m running into the limits of github pages. After trying to tag the build with a hugo-specific container I get a <code>Waiting for a self-hosted runner to pickup this job...</code> error. I guess what this means is I can&rsquo;t run any container on github actions, but only the ubuntu image.</p>
-<p>So without getting deep into github, I&rsquo;m trying this shortcut. On the line where the build happens, I&rsquo;m installing the hugo dependency. <code>sudo apt-get install hugo && hugo --minify</code></p>
+<p>So without getting deep into github, I&rsquo;m trying this shortcut. On the line where the build happens, I&rsquo;m installing the hugo dependency. <code>sudo apt-get install hugo-extended && hugo --minify</code>. Evidentally I need hugo-extended which has sass. That&rsquo;s not a thing in the repository, which means I have to install it as a tar ball. This is exactly the kind of mind-numbing bullshit in CI, especially since I&rsquo;ll have to make changes to the CI file, push it up, wait for the run, try again, etc.</p>
+<p>Now I&rsquo;m noodling around trying to patch together a minimum bare-bones theme. This is starting to remind me of theme shopping on WordPress, not a memory I relish. This process is going from bad to worst.</p>
+<p>&mldr;</p>
+<h1 id=final-steps>Final steps</h1>
+<p>I pulled down a different theme, <a href=https://github.com/ribice/kiss.git>K.I.S.S.</a>. This built fine. Then I flaied around trying to understand what the magic <code>Deploy</code> job I&rsquo;d added to the github actions did. After sorting that out I had the site running, winner!</p>
+<p>Once I did all that, I then re-imported this blog so that I&rsquo;d get the latest content (the words I&rsquo;m writing now), and pushed the site back up.</p>
+<h1 id=assessment>Assessment</h1>
+<p>Like most things in software develoment, it mostly sucked. Certainly Hugo is a tool made for developers, and I can&rsquo;t imagine a non-dev trying to set this thing up. The inevitable complications with a host, even one as easy as github pages added a layer of difficulty. This first test, Jeykll to Hugo is probably the easiest, both tools are static site generators that use the same markup for content.</p>
+<p>On the bright side, Hugo is as fast as advertised. My ~37 blog posts are not the best test case, but it was certainly fast. I could see myself fully migrating the site if I could be arsed, but I probably can&rsquo;t. From a user perspective there&rsquo;s little that Hugo offers that Jekyll doesn&rsquo;t have. (Next time I struggle with <code>gem update</code>, I may sing a different tune.)</p>
 </div>
 </div>
 </section>
