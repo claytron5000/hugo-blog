@@ -63,8 +63,20 @@ I mess around with the toml file, which results in an error I can't seem to get 
 
  Using a new container seems like the easier, but now I'm running into the limits of github pages. After trying to tag the build with a hugo-specific container I get a  `Waiting for a self-hosted runner to pickup this job...` error. I guess what this means is I can't run any container on github actions, but only the ubuntu image.
 
- So without getting deep into github, I'm trying this shortcut. On the line where the build happens, I'm installing the hugo dependency. `sudo apt-get install hugo && hugo --minify`
+ So without getting deep into github, I'm trying this shortcut. On the line where the build happens, I'm installing the hugo dependency. `sudo apt-get install hugo-extended && hugo --minify`. Evidentally I need hugo-extended which has sass. That's not a thing in the repository, which means I have to install it as a tar ball. This is exactly the kind of mind-numbing bullshit in CI, especially since I'll have to make changes to the CI file, push it up, wait for the run, try again, etc.
 
+ Now I'm noodling around trying to patch together a minimum bare-bones theme. This is starting to remind me of theme shopping on WordPress, not a memory I relish. This process is going from bad to worst.
 
+...
 
+# Final steps
 
+I pulled down a different theme, [K.I.S.S.]( https://github.com/ribice/kiss.git). This built fine. Then I flaied around trying to understand what the magic `Deploy` job I'd added to the github actions did. After sorting that out I had the site running, winner!
+
+Once I did all that, I then re-imported this blog so that I'd get the latest content (the words I'm writing now), and pushed the site back up.
+
+# Assessment
+
+Like most things in software develoment, it mostly sucked. Certainly Hugo is a tool made for developers, and I can't imagine a non-dev trying to set this thing up. The inevitable complications with a host, even one as easy as github pages added a layer of difficulty. This first test, Jeykll to Hugo is probably the easiest, both tools are static site generators that use the same markup for content. 
+
+On the bright side, Hugo is as fast as advertised. My ~37 blog posts are not the best test case, but it was certainly fast. I could see myself fully migrating the site if I could be arsed, but I probably can't. From a user perspective there's little that Hugo offers that Jekyll doesn't have. (Next time I struggle with `gem update`, I may sing a different tune.)
