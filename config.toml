@@ -1,4 +1,4 @@
 baseURL = "https://claytron5000.github.io/hugo-blog"
 languageCode = "en-us"
 title = "My New Hugo Site"
-theme = "ananke"
+theme = "kiss"
