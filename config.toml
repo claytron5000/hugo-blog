@@ -1,4 +1,37 @@
-baseURL = "https://claytron5000.github.io/hugo-blog"
+baseURL = "https://claytron5000.github.io"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Sweating the Small Stuff"
 theme = "kiss"
+
+copyright = "&copy; <a href=\"https://github.com/claytron5000\">Clayton Salem</a> 2021"
+
+# Paginate = 5 # Number of posts per page
+enableRobotsTXT = true
+
+[params.rss] # Adding this tag enables RSS feed
+includeContent = true # Includes whole content in rss
+authorName = "Clayton Salem" # Author full name
+authorEmail = "claytonjsalem@gmail.com" # Author email
+
+[params.assets]
+customCSS = ["css/custom.css"]
+
+[params.info]
+
+enableSocial = true # Adds OpenGraph and Twitter cards
+related = true # Includes related articles at the bottom of the article
+codeCopy = true # Add copy button above code blocks
+#taxonomiesCount = true # Add taxonomies count
+
+[params.social]
+twitter = "ClaytonSalem"
+github = "claytron5000"
+email = "claytonjsalem@gmail.com"
+#linkedin = "?"
+#facebook = "?"
+#instagram = ""
+#codepen = ""
+rss = "index.xml" # Add this to show RSS button in social.
+
+[params.social.config]
+platforms = ["github","twitter","email"]
