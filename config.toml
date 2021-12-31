@@ -1,4 +1,4 @@
-baseURL = "https://claytron5000.github.io"
+baseURL = "https://claytron5000.github.io/hugo-blog"
 languageCode = "en-us"
 title = "Sweating the Small Stuff"
 theme = "kiss"
