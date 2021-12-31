@@ -1,0 +1,3 @@
+User-agent: *
+
+Sitemap: https://claytron5000.github.io/sitemap.xml
